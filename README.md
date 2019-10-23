@@ -1,0 +1,2 @@
+# XMailer-
+install module sendiri
